@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>learnAPI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body> 
+    <h1>Laugh Generator</h1>
+    <h1> 😂 Start laughing 😂</h1>
+    <h2>Find Your Daily Dose of Laughter</h2>
+    <div class="container">
+      <div class = listJoke>
+        <form action="/" id = "form" class = "form" method="post">
+            <select name="category" class = "form-select">
+                <option value = "Any" data-display = "select">category</option>
+                <option value = "Programming">Programming</option>
+                <option value = "Miscellaneous">Miscellaneous</option>
+                <option value = "Dark">Dark</option>
+                <option value = "Pun">Pun</option>
+                <option value = "Spooky">Spooky</option>
+                <option value = "Christmas"> Christmas</option>
+            </select>
+            <select name = blacklistFlags  class = "form-select">
+                <option value = "" data-display = "select">Optional</option>
+                <option value = "nsfw">nsfw</option>
+                <option value = "religious">religious</option>
+                <option value = "political">political</option>
+                <option value = "racist">racist</option>
+                <option value = "explicit">explicit</option>
+            </select>
+            <select name = JokeType  class = "form-select">
+                <option value = "" data-display = "select">Joke type</option>
+                <option value = "signal">Signal</option>
+                <option value = "twopart">Two Part</option>
+            </select>
+            <button type="submit" class="form-submit">Get a joke</button>
+        </form>
+      </div>
+      <div class = jokeContent>
+        <% if (locals.data) { %>
+            <p>
+                Category: <%= data.category %>
+            </p>
+            <% if (data.type === "single") { %>
+                <p>
+                    <h4>joke:</h4> <%= data.joke %>
+                </p>
+            <% } else if (data.type === "twopart") { %>
+                <p>
+                    <h4>Setup:</h4> <%= data.setup %>
+                </p>
+                <p>
+                    <h4>Delivery:</h4> <%= data.delivery %>
+                </p>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>
